@@ -1,0 +1,171 @@
+# Py 2.7
+import math
+
+# [ ] Use the math module to display an accurate value for pi
+print math.pi
+
+
+# [ ] Write a program to:
+# 1) find all the numbers in a list that are divisible by 3
+# 2) display the square root of these numbers
+# 3) use a rounding function to display the square roots while ignoring the decimal fraction
+
+lst = [23, 45, 65, 2345, 42, 76, 37, 87, 647, 35, 37 ,39, 898, 92, 18]
+
+for x in lst:
+    if x % 3 == 0:
+        print math.trunc(math.sqrt(x))
+
+
+# [ ] Complete the function `quarters_count` so it calculates and prints the number of quarters in `input_cents`
+# The function input `input_cents` should be in cents
+# The function should print the number of calculated quarters in `input_cents`
+# The function should return the number of remaining cents `remaining_cents` (which is less than 25, why?)
+# HINT: You might want to use % and // operators
+
+def quarters_count(input_cents):
+    print input_cents // 25
+    remaining_cents = input_cents % 25
+    return remaining_cents
+
+# test with $2
+# Output should be: 8 quarter\s
+dollars = 2
+total_cents = dollars * 100
+remaining_cents = quarters_count(total_cents)
+
+# test with $5.30
+# Output should be: 21.0 quarter\s
+dollars = 5.30
+total_cents = dollars * 100
+remaining_cents = quarters_count(total_cents)
+
+# test with $9.49
+# Output should be: 37.0 quarter\s
+dollars = 9.49
+total_cents = dollars * 100
+remaining_cents = quarters_count(total_cents)
+
+# [ ] Complete the function `dimes_count` so it calculates and prints the number of dimes in `input_cents`
+# The function input `input_cents` should be in cents
+# The function should print the number of calculated dimes in `input_cents`
+# The function should return the number of remaining cents `remaining_cents` (which is less than 10, why?)
+# HINT: You might want to use % and // operators
+
+def dimes_count(input_cents):
+    print input_cents // 10
+    remaining_cents = input_cents % 10
+    return remaining_cents
+
+# test with $2
+# Output should be: 20 dime\s
+dollars = 2
+total_cents = dollars * 100
+remaining_cents = dimes_count(total_cents)
+
+# test with $5.30
+# Output should be: 53.0 dime\s
+dollars = 5.30
+total_cents = dollars * 100
+remaining_cents = dimes_count(total_cents)
+
+# test with $9.49
+# Output should be: 94.0 dime\s
+dollars = 9.49
+total_cents = dollars * 100
+remaining_cents = dimes_count(total_cents)
+
+# [ ] Complete the function `nickels_count` so it calculates and prints the number of nickels in `input_cents`
+# The function input `input_cents` should be in cents
+# The function should print the number of calculated nickels in `input_cents`
+# The function should return the number of remaining cents `remaining_cents` (which is less than 5, why?)
+# HINT: You might want to use % and // operators
+
+def nickels_count(input_cents):
+    print input_cents // 5
+    remaining_cents = input_cents % 5
+    return remaining_cents
+
+# test with $2
+# Output should be: 40 nickel\s
+dollars = 2
+total_cents = dollars * 100
+remaining_cents = nickels_count(total_cents)
+
+# test with $5.30
+# Output should be: 106.0 nickel\s
+dollars = 5.30
+total_cents = dollars * 100
+remaining_cents = nickels_count(total_cents)
+
+# test with $9.49
+# Output should be: 189.0 nickel\s
+dollars = 9.49
+total_cents = dollars * 100
+remaining_cents = nickels_count(total_cents)
+
+#[ ] Complete the function `coins_due` to calculate and print the change due to a customer in coins
+#
+# The function `coins_due` has 2 inputs:
+#      - `amount_paid`: Amount paid by a customer (in cents)
+#      - `item_price`: Purchase price of an item
+#
+# The function should print:
+#      - The number of quarters due
+#      - The number of dimes due
+#      - The number of nickels due
+#      - The number of cents due
+#
+# The function does not need to return anything
+#
+# HINT: Use the functions you developed before `quarters_count`, `dimes_count`, `nickels_count`
+
+
+def quarters_count(input_cents):
+    print input_cents // 25, 'quarter\s'
+    remaining_cents = input_cents % 25
+    return remaining_cents
+
+def dimes_count(input_cents):
+    print input_cents // 10, 'dime/s'
+    remaining_cents = input_cents % 10
+    return remaining_cents
+
+def nickels_count(input_cents):
+    print input_cents // 5, 'nyckel/s'
+    remaining_cents = input_cents % 5
+    return remaining_cents
+
+def cents_count(input_cents):
+    print input_cents // 1, 'cent/s'
+    remaining_cents = input_cents % 1
+    return remaining_cents
+
+
+def coins_due(amount_paid, item_price):
+    print("Change due:")
+    amount_paid = amount_paid * 100
+    item_price = item_price * 100
+    change = amount_paid - item_price
+
+    cents_count(nickels_count(dimes_count(quarters_count(change))))
+
+
+
+# Test case:
+# amount paid = $10, item price = $5.37
+# Output should be:
+#    Change due:
+#    18.0 quarter\s
+#    1.0 dime\s
+#    0.0 nickel\s
+#    3.0 cent\s
+
+amount_paid = 10 * 100 # in cents
+item_price = 5.37 * 100 # in cents
+#coins_due(amount_paid, item_price)
+
+coins_due(20, 11.35)
+coins_due(10, 5.37)
+coins_due(100, 89.95)
+coins_due(10, 8.95)
